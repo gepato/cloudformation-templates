@@ -1,0 +1,20 @@
+{
+  "DOMAIN": {
+    "type": "property",
+    "key": "DOMAIN"
+  },
+  "CERTIFICATE_ARN": {
+    "type": "property",
+    "key": "CERTIFICATE_ARN"
+  },
+  "EXTERNAL_DOMAIN": {
+    "type": "property",
+    "key": "EXTERNAL_DOMAIN",
+    "default":"${DOMAIN}"
+  },
+  "EXTERNAL_CERTIFICATE_ARN": {
+    "type": "property",
+    "key": "EXTERNAL_CERTIFICATE_ARN",
+    "default": "${CERTIFICATE_ARN}"
+  }
+}

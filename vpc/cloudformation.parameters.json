@@ -1,0 +1,35 @@
+[
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "${ENVIRONMENT}"
+  },
+  {
+    "ParameterKey": "Application",
+    "ParameterValue": "${APPLICATION}"
+  },
+  {
+    "ParameterKey": "KeyName",
+    "ParameterValue": "${KEY_NAME}"
+  },
+  {
+    "ParameterKey": "Domain",
+    "ParameterValue": "${DOMAIN}"
+  },
+  {
+    "ParameterKey": "CertificateARN",
+    "ParameterValue": "${CERTIFICATE_ARN}"
+  },
+  {
+    "ParameterKey": "ExternalDomain",
+    "ParameterValue": "${EXTERNAL_DOMAIN}"
+  },
+  {
+    "ParameterKey": "ExternalDomainCertificateARN",
+    "ParameterValue": "${EXTERNAL_CERTIFICATE_ARN}"
+  },
+  {
+    "ParameterKey": "DatadogKey",
+    "ParameterValue": "${DATADOG_KEY}"
+  }
+]
+
