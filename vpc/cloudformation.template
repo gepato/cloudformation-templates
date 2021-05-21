@@ -74,6 +74,7 @@
     }
   },
   "Resources": {
+
     "S3LoggingPolicy": {
       "Type": "AWS::S3::BucketPolicy",
       "Properties": {
@@ -135,25 +136,6 @@
             "Value": {
               "Ref": "Application"
             }
-          }
-        ]
-      }
-    },
-    "SecurityGroup": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupDescription": {
-          "Fn::Sub": "${Environment}-${Application}-bastion"
-        },
-        "VpcId": {
-          "Ref": "VPC"
-        },
-        "SecurityGroupIngress": [
-          {
-            "CidrIp": "0.0.0.0/0",
-            "FromPort": 22,
-            "IpProtocol": "tcp",
-            "ToPort": 22
           }
         ]
       }
