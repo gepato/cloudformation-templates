@@ -45,7 +45,7 @@
         "TargetId": {
           "Ref": "RdsDbCluster"
         },
-        "TargetType": "AWS::RDS::DBInstance"
+        "TargetType": "AWS::RDS::DBCluster"
       }
     },
     "DBClusterParameterGroup": {
