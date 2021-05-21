@@ -1,7 +1,3 @@
 {
-  "DB_INSTANCE_TYPE": {
-    "type": "property",
-    "key": "DB_INSTANCE_TYPE",
-    "default": "db.t2.medium"
-  }
+
 }

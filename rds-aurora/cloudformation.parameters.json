@@ -16,18 +16,6 @@
     "ParameterValue": "${ENVIRONMENT}"
   },
   {
-    "ParameterKey": "InstanceType",
-    "ParameterValue": "${DB_INSTANCE_TYPE}"
-  },
-  {
-    "ParameterKey": "MasterUsername",
-    "ParameterValue": "${MASTER_USERNAME}"
-  },
-  {
-    "ParameterKey": "MasterPassword",
-    "ParameterValue": "${MASTER_PASSWORD}"
-  },
-  {
     "ParameterKey": "DatabaseName",
     "ParameterValue": "${DATABASE_NAME}"
   }
