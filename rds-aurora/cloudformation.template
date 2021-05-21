@@ -128,18 +128,6 @@
       "Type": "AWS::EC2::SecurityGroup",
       "Properties": {
         "GroupDescription": "Created from the Cloud",
-        "SecurityGroupIngress": [
-
-          {
-            "IpProtocol": "tcp",
-            "SourceSecurityGroupId": {
-              "Fn::GetAtt": [
-                "RdsSourceGroup",
-                "GroupId"
-              ]
-            }
-          }
-        ],
         "VpcId": {
           "Fn::ImportValue": {
             "Fn::Sub": "${VPCStack}-VPC"
@@ -197,6 +185,12 @@
           "Ref": "RdsSecurityGroup"
         },
         "IpProtocol": "tcp",
+        "SourceSecurityGroupId": {
+          "Fn::GetAtt": [
+            "RdsSourceGroup",
+            "GroupId"
+          ]
+        },
         "FromPort": "5432",
         "ToPort": "5432",
         "CidrIp": "10.0.0.0/16"
@@ -208,7 +202,7 @@
         "GroupId": {
           "Ref": "RdsSecurityGroup"
         },
-        "IpProtocol": "tcp",
+        "IpProtocol": "-1",
         "CidrIp": "0.0.0.0/0"
       }
     },
