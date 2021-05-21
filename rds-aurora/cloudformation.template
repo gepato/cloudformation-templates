@@ -48,6 +48,16 @@
         "TargetType": "AWS::RDS::DBInstance"
       }
     },
+    "DBClusterParameterGroup": {
+      "Type": "AWS::RDS::DBClusterParameterGroup",
+      "Properties": {
+        "Description": "Param group",
+        "Family": "aurora-postgresql10",
+        "Parameters": {
+          "client_encoding": "UTF8"
+        }
+      }
+    },
     "RdsDbCluster": {
       "Type": "AWS::RDS::DBCluster",
       "Properties": {
@@ -61,7 +71,9 @@
           "MaxCapacity": 16,
           "SecondsUntilAutoPause": 600
         },
-        "DBClusterParameterGroupName": "aurora-postgresql10",
+        "DBClusterParameterGroupName": {
+          "Ref": "DBClusterParameterGroup"
+        },
         "DatabaseName": {
           "Ref": "DatabaseName"
         },
