@@ -1,0 +1,34 @@
+[
+  {
+    "ParameterKey": "StackName",
+    "ParameterValue": "${EnvName}"
+  },
+  {
+    "ParameterKey": "VPCStack",
+    "ParameterValue": "${VPC_STACK_NAME}"
+  },
+  {
+    "ParameterKey": "Application",
+    "ParameterValue": "${APPLICATION}"
+  },
+  {
+    "ParameterKey": "Environment",
+    "ParameterValue": "${ENVIRONMENT}"
+  },
+  {
+    "ParameterKey": "InstanceType",
+    "ParameterValue": "${DB_INSTANCE_TYPE}"
+  },
+  {
+    "ParameterKey": "MasterUsername",
+    "ParameterValue": "${MASTER_USERNAME}"
+  },
+  {
+    "ParameterKey": "MasterPassword",
+    "ParameterValue": "${MASTER_PASSWORD}"
+  },
+  {
+    "ParameterKey": "DatabaseName",
+    "ParameterValue": "${DATABASE_NAME}"
+  }
+]
