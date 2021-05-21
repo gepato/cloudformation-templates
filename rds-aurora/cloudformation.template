@@ -129,7 +129,9 @@
       "Properties": {
         "GroupDescription": "Created from the Cloud",
         "SecurityGroupIngress": [
+
           {
+            "IpProtocol": "tcp",
             "SourceSecurityGroupId": {
               "Fn::GetAtt": [
                 "RdsSourceGroup",
@@ -206,7 +208,7 @@
         "GroupId": {
           "Ref": "RdsSecurityGroup"
         },
-        "IpProtocol": "-1",
+        "IpProtocol": "tcp",
         "CidrIp": "0.0.0.0/0"
       }
     },
