@@ -29,7 +29,7 @@
       "Properties": {
         "Description": "This is a Secrets Manager secret for an RDS DB instance",
         "GenerateSecretString": {
-          "SecretStringTemplate": "{\"username\": \"admin\"}",
+          "SecretStringTemplate": "{\"username\": \"dbadmin\"}",
           "GenerateStringKey": "password",
           "PasswordLength": 16,
           "ExcludeCharacters": "\"@/\\"

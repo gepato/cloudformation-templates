@@ -144,8 +144,8 @@
       "Type": "AWS::EC2::VPC",
       "Properties": {
         "CidrBlock": "10.0.0.0/16",
-        "EnableDnsSupport": "true",
-        "EnableDnsHostnames": "true",
+        "EnableDnsSupport": true,
+        "EnableDnsHostnames": true,
         "Tags": [
           {
             "Key": "Application",
@@ -176,7 +176,6 @@
     },
     "SubnetAPriv": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ A Private",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -214,7 +213,6 @@
     },
     "SubnetAPub": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ A Public",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -252,7 +250,6 @@
     },
     "SubnetBPriv": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ B Private",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -290,7 +287,6 @@
     },
     "SubnetBPub": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ B Public",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -328,7 +324,6 @@
     },
     "SubnetCPriv": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ C Private",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -366,7 +361,6 @@
     },
     "SubnetCPub": {
       "Type": "AWS::EC2::Subnet",
-      "Description": "AZ C Public",
       "Properties": {
         "VpcId": {
           "Ref": "VPC"
@@ -615,7 +609,7 @@
         "LogGroupName": {
           "Fn::Sub": "${Environment}-${Application}-vpc-flowlogs"
         },
-        "RetentionInDays": "7"
+        "RetentionInDays": 7
       }
     },
     "FlowLogRole": {
