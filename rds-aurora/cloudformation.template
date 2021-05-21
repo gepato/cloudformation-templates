@@ -71,8 +71,8 @@
         "MasterUserPassword": {
           "Fn::Sub": "{{resolve:secretsmanager:${RDSAdminCredentials}::password}}"
         },
-        "Port": "5432",
-        "BackupRetentionPeriod": "7",
+        "Port": 5432,
+        "BackupRetentionPeriod": 7,
         "PreferredBackupWindow": "05:19-06:19",
         "PreferredMaintenanceWindow": "sat:06:20-sat:07:50",
         "DBSubnetGroupName": {
@@ -191,9 +191,8 @@
             "GroupId"
           ]
         },
-        "FromPort": "5432",
-        "ToPort": "5432",
-        "CidrIp": "10.0.0.0/16"
+        "FromPort": 5432,
+        "ToPort": 5432
       }
     },
     "DBSecurityEgress": {
@@ -238,7 +237,7 @@
           ]
         },
         "Type": "CNAME",
-        "TTL": "900",
+        "TTL": 900,
         "ResourceRecords": [
           {
             "Fn::GetAtt": [
