@@ -61,7 +61,9 @@
     "RdsDbCluster": {
       "Type": "AWS::RDS::DBCluster",
       "Properties": {
-        "DBClusterIdentifier": "my-serverless-cluster",
+        "DBClusterIdentifier":{
+                    "Ref": "StackName"
+                  } ,
         "Engine": "aurora-postgresql",
         "EngineVersion": "10.7",
         "EngineMode": "serverless",
