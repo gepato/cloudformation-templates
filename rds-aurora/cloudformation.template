@@ -21,6 +21,10 @@
     "DatabaseName": {
       "Description": "Database name",
       "Type": "String"
+    },
+    "Role": {
+      "Description": "The role of the service.",
+      "Type": "String"
     }
   },
   "Resources": {
@@ -30,6 +34,7 @@
         "Description": "This is a Secrets Manager secret for an RDS DB instance",
         "GenerateSecretString": {
           "SecretStringTemplate": "{\"username\": \"dbadmin\"}",
+          "Name": {  "Fn::Sub": "/${Environment}/${Application}/${Role}/db-credentials" },
           "GenerateStringKey": "password",
           "PasswordLength": 16,
           "ExcludeCharacters": "\"@/\\"

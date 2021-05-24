@@ -18,5 +18,9 @@
   {
     "ParameterKey": "DatabaseName",
     "ParameterValue": "${DATABASE_NAME}"
+  },
+  {
+    "ParameterKey": "Role",
+    "ParameterValue": "${ROLE}"
   }
 ]
