@@ -72,6 +72,7 @@
         "Engine": "aurora-postgresql",
         "EngineVersion": "10.7",
         "EngineMode": "serverless",
+        "EnableHttpEndpoint": true,
         "ScalingConfiguration": {
           "AutoPause": true,
           "MinCapacity": 2,
