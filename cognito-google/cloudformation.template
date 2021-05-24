@@ -1,0 +1,200 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Parameters": {
+    "Environment": {
+      "Description": "The environment this cluster is for.",
+      "Type": "String"
+    },
+    "Application": {
+      "Description": "The application this cluster is for.",
+      "Type": "String"
+    },
+    "Role": {
+      "Description": "The role which should always be 'cluster' in the infra-buddy usecases.",
+      "Type": "String"
+    },
+    "VPCStack": {
+      "Description": "The stack name of the vpc deployed by infra-buddy that will be the target of this cluster.",
+      "Type": "String"
+    },
+    "CognitoDomain": {
+      "Type": "String",
+      "MinLength": 3,
+      "MaxLength": 63,
+      "AllowedPattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
+      "Description": "Enter a string. Must be alpha numeric 3-63 in length."
+    },
+    "GoogleClientId": {
+      "Type": "String",
+      "MinLength": 3,
+      "MaxLength": 100,
+      "Description": "Enter a string. Must be alpha numeric 3-63 in length."
+    },
+    "GoogleClientSecret": {
+      "Type": "String",
+      "MinLength": 3,
+      "MaxLength": 63,
+      "Description": "Enter a string. Must be alpha numeric 3-63 in length."
+    }
+  },
+  "Resources": {
+    "UserPool": {
+      "Type": "AWS::Cognito::UserPool",
+      "Properties": {
+        "UsernameConfiguration": {
+          "CaseSensitive": false
+        },
+        "AutoVerifiedAttributes": [
+            "email"
+        ],
+        "AliasAttributes": [
+            "email"
+        ],
+        "UserPoolName": {
+          "Fn::Sub": "${CognitoDomain}-user-pool"
+        },
+        "Schema": [
+          {
+            "Name": "email",
+            "AttributeDataType": "String",
+            "Mutable": false,
+            "Required": true
+          },
+          {
+            "Name": "name",
+            "AttributeDataType": "String",
+            "Mutable": true,
+            "Required": false
+          },
+          {
+            "Name": "tenant_id",
+            "AttributeDataType": "String",
+            "Mutable": false
+          },
+          {
+            "Name": "tier",
+            "AttributeDataType": "String",
+            "Mutable": true,
+            "Required": false
+          },
+          {
+            "Name": "company_name",
+            "AttributeDataType": "String",
+            "Mutable": true,
+            "Required": false
+          },
+          {
+            "Name": "role",
+            "AttributeDataType": "String",
+            "Mutable": true,
+            "Required": false
+          }
+        ]
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "094a98db-d931-4045-a4c1-74f2ce572103"
+        }
+      }
+    },
+    "UserPoolIdentityProvider": {
+      "Type": "AWS::Cognito::UserPoolIdentityProvider",
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "UserPool"
+        },
+        "ProviderName": "Google",
+        "AttributeMapping": {
+          "email": "email"
+        },
+        "ProviderDetails": {
+          "client_id": {
+            "Fn::Sub": "${GoogleClientId}"
+          },
+          "client_secret": {
+            "Fn::Sub": "${GoogleClientSecret}"
+          },
+          "authorize_scopes": "profile email openid"
+        },
+        "ProviderType": "Google"
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "6eb75447-0337-4ca1-b4e1-466fd2e2888c"
+        }
+      }
+    },
+    "UserPoolClient": {
+      "Type": "AWS::Cognito::UserPoolClient",
+      "DependsOn": [
+          "UserPoolIdentityProvider"
+      ],
+      "Properties": {
+        "UserPoolId": {
+          "Ref": "UserPool"
+        },
+        "AllowedOAuthFlowsUserPoolClient": true,
+        "CallbackURLs": [
+            "http://localhost:3000/user"
+        ],
+        "LogoutURLs": [
+            "http://localhost:3000/logout"
+        ],
+        "ExplicitAuthFlows": [
+            "ALLOW_CUSTOM_AUTH",
+            "ALLOW_REFRESH_TOKEN_AUTH",
+            "ALLOW_USER_SRP_AUTH"
+        ],
+        "AllowedOAuthFlows": [
+            "code",
+            "implicit"
+        ],
+        "AllowedOAuthScopes": [
+            "email",
+            "openid",
+            "profile"
+        ],
+        "SupportedIdentityProviders": [
+            "COGNITO",
+            "Google"
+        ]
+      },
+      "Metadata": {
+        "AWS::CloudFormation::Designer": {
+          "id": "60fa9d38-07f7-40bd-a212-d887933a7390"
+        }
+      }
+    },
+    "UserPoolDomain": {
+      "Type": "AWS::Cognito::UserPoolDomain",
+      "Properties": {
+        "Domain": {
+          "Ref": "CognitoDomain"
+        },
+        "UserPoolId": {
+          "Ref": "UserPool"
+        }
+      }
+    }
+  },
+  "Outputs": {
+    "CognitoUserPoolID": {
+      "Value": {
+        "Ref": "UserPool"
+      },
+      "Description": "The UserPool ID"
+    },
+    "CognitoAppClientID": {
+      "Value": {
+        "Ref": "UserPoolClient"
+      },
+      "Description": "The app client"
+    },
+    "HostedUIURL": {
+      "Value": {
+        "Fn::Sub": "https://${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=http://localhost:3000"
+      },
+      "Description": "The hosted UI URL"
+    }
+  }
+}
