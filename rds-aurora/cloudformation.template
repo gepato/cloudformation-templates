@@ -32,9 +32,9 @@
       "Type": "AWS::SecretsManager::Secret",
       "Properties": {
         "Description": "This is a Secrets Manager secret for an RDS DB instance",
+        "Name": {  "Fn::Sub": "/${Environment}/${Application}/${Role}/db-credentials" },
         "GenerateSecretString": {
           "SecretStringTemplate": "{\"username\": \"dbadmin\"}",
-          "Name": {  "Fn::Sub": "/${Environment}/${Application}/${Role}/db-credentials" },
           "GenerateStringKey": "password",
           "PasswordLength": 16,
           "ExcludeCharacters": "\"@/\\"
