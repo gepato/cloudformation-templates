@@ -1,5 +1,6 @@
 set -e
 export REGION=us-east-1
+export AWS_DEFAULT_REGION=us-east-1
 for dir in */; do
   echo $dir
   infra-buddy  validate-template --service-template-directory $dir
