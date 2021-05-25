@@ -190,6 +190,13 @@
       },
       "Description": "The app client"
     },
+    "lintsafe": {
+      "Value": {
+        "Fn::Sub": "/${Environment}/${Application}/${Role}/${VPCStack}"
+
+      },
+      "Description": "lint safe"
+    },
     "HostedUIURL": {
       "Value": {
         "Fn::Sub": "https://${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=http://localhost:3000"
