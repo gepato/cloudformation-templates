@@ -203,7 +203,7 @@
         "HealthCheckTimeoutSeconds": 10,
         "HealthyThresholdCount": 5,
         "UnhealthyThresholdCount": 2,
-        "TargetType":"ip",
+        "TargetType": "ip",
         "TargetGroupAttributes": [
           {
             "Key": "deregistration_delay.timeout_seconds",
@@ -226,10 +226,10 @@
       "Type": "AWS::ECS::Cluster"
     },
     "FargateTaskAccessPolicy": {
-      "Type" : "AWS::IAM::ManagedPolicy",
-      "Properties" : {
-        "Path" : "/",
-        "PolicyDocument" : {
+      "Type": "AWS::IAM::ManagedPolicy",
+      "Properties": {
+        "Path": "/",
+        "PolicyDocument": {
           "Version": "2012-10-17",
           "Statement": [
             {
@@ -339,6 +339,17 @@
       "Export": {
         "Name": {
           "Fn::Sub": "${AWS::StackName}-PrimaryDNS"
+        }
+      }
+    },
+    "ECSCluster": {
+      "Value": {
+        "Ref": "ECSCluster"
+      },
+      "Description": "The ARN for the ECS cluster.",
+      "Export": {
+        "Name": {
+          "Fn::Sub": "${AWS::StackName}-ECSCluster"
         }
       }
     },
