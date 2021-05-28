@@ -169,33 +169,6 @@
         ]
       }
     },
-    "RdsSourceGroup": {
-      "Type": "AWS::EC2::SecurityGroup",
-      "Properties": {
-        "GroupDescription": "Created from the Cloud",
-        "VpcId": {
-          "Fn::ImportValue": {
-            "Fn::Sub": "${VPCStack}-VPC"
-          }
-        },
-        "Tags": [
-          {
-            "Key": "Name",
-            "Value": {
-              "Fn::Join": [
-                "",
-                [
-                  {
-                    "Ref": "StackName"
-                  },
-                  "-RdsSourceGroup"
-                ]
-              ]
-            }
-          }
-        ]
-      }
-    },
     "DBSecurityIngress": {
       "Type": "AWS::EC2::SecurityGroupIngress",
       "Properties": {
@@ -203,12 +176,6 @@
           "Ref": "RdsSecurityGroup"
         },
         "IpProtocol": "tcp",
-        "SourceSecurityGroupId": {
-          "Fn::GetAtt": [
-            "RdsSourceGroup",
-            "GroupId"
-          ]
-        },
         "FromPort": 5432,
         "ToPort": 5432
       }
