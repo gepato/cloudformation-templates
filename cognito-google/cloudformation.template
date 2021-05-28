@@ -51,7 +51,7 @@
             "email"
         ],
         "UserPoolName": {
-          "Fn::Sub": "${CognitoDomain}-user-pool"
+          "Fn::Sub": "${Environment}-${Application}-${CognitoDomain}-user-pool"
         },
         "Schema": [
           {
