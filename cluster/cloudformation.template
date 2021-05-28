@@ -201,7 +201,7 @@
         "HealthCheckIntervalSeconds": 30,
         "HealthCheckProtocol": "HTTP",
         "HealthCheckTimeoutSeconds": 10,
-        "HealthyThresholdCount": 5,
+        "HealthyThresholdCount": 2,
         "UnhealthyThresholdCount": 2,
         "TargetType": "ip",
         "TargetGroupAttributes": [
