@@ -173,9 +173,13 @@
       "Type": "AWS::EC2::SecurityGroupIngress",
       "Properties": {
         "GroupId": {
-          "Ref": "RdsSecurityGroup"
+          "Fn::GetAtt": [
+            "RdsSecurityGroup",
+            "GroupId"
+          ]
         },
         "IpProtocol": "tcp",
+        "CidrIp": "10.0.0.0/8",
         "FromPort": 5432,
         "ToPort": 5432
       }
