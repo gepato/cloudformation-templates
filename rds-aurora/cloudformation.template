@@ -351,28 +351,6 @@
       },
       "Description": "Aurora RDS CLuster Security Group ID"
     },
-    "RdsClusterSournceGroup": {
-      "Value": {
-        "Fn::GetAtt": [
-          "RdsSourceGroup",
-          "GroupId"
-        ]
-      },
-      "Export": {
-        "Name": {
-          "Fn::Join": [
-            "",
-            [
-              {
-                "Ref": "StackName"
-              },
-              "-RdsDbCluster-SourceSecurityGroupID"
-            ]
-          ]
-        }
-      },
-      "Description": "Aurora RDS CLuster Source Security Group ID - required for access to DB"
-    },
     "RdsSecrets": {
       "Value": {
         "Ref": "RDSAdminCredentials"
