@@ -22,7 +22,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install  --upgrade pip
-        pip install  infra-buddy awscli
+        pip install  infra-buddy cfn-lint
     - name: Build and publish
       run: |
         ./validate_template.sh
