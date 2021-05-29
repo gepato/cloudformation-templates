@@ -13,14 +13,6 @@
     "ParameterValue": "${ROLE}"
   },
   {
-    "ParameterKey": "GoogleClientSecret",
-    "ParameterValue": "${GOOGLE_CLIENT_SECRET}"
-  },
-  {
-    "ParameterKey": "GoogleClientId",
-    "ParameterValue": "${GOOGLE_CLIENT_ID}"
-  },
-  {
     "ParameterKey": "Application",
     "ParameterValue": "${APPLICATION}"
   },
