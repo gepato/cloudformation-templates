@@ -135,10 +135,10 @@
         },
         "AllowedOAuthFlowsUserPoolClient": true,
         "CallbackURLs": [
-            "http://localhost:3000/user"
+            "https://${Environment}-${Application}-frontend.nudgesecurity.io/user"
         ],
         "LogoutURLs": [
-            "http://localhost:3000/logout"
+            "https://${Environment}-${Application}-frontend.nudgesecurity.io/logout"
         ],
         "ExplicitAuthFlows": [
             "ALLOW_CUSTOM_AUTH",
@@ -199,7 +199,7 @@
     },
     "HostedUIURL": {
       "Value": {
-        "Fn::Sub": "https://${Environment}-${Application}-${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=http://${Environment}-${Application}-frontend.nudgesecurity.io/home"
+        "Fn::Sub": "https://${Environment}-${Application}-${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://${Environment}-${Application}-frontend.nudgesecurity.io/home"
       },
       "Description": "The hosted UI URL"
     }
