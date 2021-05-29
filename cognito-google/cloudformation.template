@@ -23,18 +23,6 @@
       "MaxLength": 63,
       "AllowedPattern": "^[a-z0-9](?:[a-z0-9\\-]{0,61}[a-z0-9])?$",
       "Description": "Enter a string. Must be alpha numeric 3-63 in length."
-    },
-    "GoogleClientId": {
-      "Type": "String",
-      "MinLength": 3,
-      "MaxLength": 100,
-      "Description": "Enter a string. Must be alpha numeric 3-63 in length."
-    },
-    "GoogleClientSecret": {
-      "Type": "String",
-      "MinLength": 3,
-      "MaxLength": 63,
-      "Description": "Enter a string. Must be alpha numeric 3-63 in length."
     }
   },
   "Resources": {
@@ -109,10 +97,10 @@
         },
         "ProviderDetails": {
           "client_id": {
-            "Fn::Sub": "${GoogleClientId}"
+            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials::client_id}}"
           },
           "client_secret": {
-            "Fn::Sub": "${GoogleClientSecret}"
+            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials::password}}"
           },
           "authorize_scopes": "profile email openid"
         },
