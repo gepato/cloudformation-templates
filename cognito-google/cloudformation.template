@@ -97,10 +97,10 @@
         },
         "ProviderDetails": {
           "client_id": {
-            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials::client_id}}"
+            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials:client_id}}"
           },
           "client_secret": {
-            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials::password}}"
+            "Fn::Sub": "{{resolve:secretsmanager:/${Environment}/${Application}/google-cognito-client/google-credentials:password}}"
           },
           "authorize_scopes": "profile email openid"
         },
