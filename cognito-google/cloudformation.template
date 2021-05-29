@@ -199,7 +199,7 @@
     },
     "HostedUIURL": {
       "Value": {
-        "Fn::Sub": "https://${Environment}-${Application}-${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://${Environment}-${Application}-frontend.nudgesecurity.io/home"
+        "Fn::Sub": "https://${Environment}-${Application}-${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=https://${Environment}-${Application}.nudgesecurity.io/home"
       },
       "Description": "The hosted UI URL"
     }
