@@ -135,10 +135,10 @@
         },
         "AllowedOAuthFlowsUserPoolClient": true,
         "CallbackURLs": [
-            "https://${Environment}-${Application}-frontend.nudgesecurity.io/user"
+            "Fn::Sub": "https://${Environment}-${Application}-frontend.nudgesecurity.io/user"
         ],
         "LogoutURLs": [
-            "https://${Environment}-${Application}-frontend.nudgesecurity.io/logout"
+            "Fn::Sub": "https://${Environment}-${Application}-frontend.nudgesecurity.io/logout"
         ],
         "ExplicitAuthFlows": [
             "ALLOW_CUSTOM_AUTH",
