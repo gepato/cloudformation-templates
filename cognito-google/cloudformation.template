@@ -169,7 +169,7 @@
       "Type": "AWS::Cognito::UserPoolDomain",
       "Properties": {
         "Domain": {
-          "Ref": "CognitoDomain"
+          "Fn::Sub": "${Environment}-${Application}-${CognitoDomain}"
         },
         "UserPoolId": {
           "Ref": "UserPool"
@@ -199,7 +199,7 @@
     },
     "HostedUIURL": {
       "Value": {
-        "Fn::Sub": "https://${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=http://localhost:3000"
+        "Fn::Sub": "https://${Environment}-${Application}-${CognitoDomain}.auth.us-west-2.amazoncognito.com/login?client_id=${UserPoolClient}&response_type=code&scope=email+openid+phone+profile&redirect_uri=http://${Environment}-${Application}-frontend.nudgesecurity.io/home"
       },
       "Description": "The hosted UI URL"
     }
