@@ -133,6 +133,7 @@
         "UserPoolId": {
           "Ref": "UserPool"
         },
+        "GenerateSecret" : true,
         "AllowedOAuthFlowsUserPoolClient": true,
         "CallbackURLs": [
             {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/user"}
