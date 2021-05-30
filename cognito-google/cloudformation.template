@@ -136,7 +136,7 @@
         "GenerateSecret" : true,
         "AllowedOAuthFlowsUserPoolClient": true,
         "CallbackURLs": [
-            {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/user"}
+            {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/aws_cognito_redirect"}
         ],
         "LogoutURLs": [
             {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/logout"}
