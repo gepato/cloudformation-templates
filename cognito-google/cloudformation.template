@@ -139,7 +139,7 @@
             {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/aws_cognito_redirect"}
         ],
         "LogoutURLs": [
-            {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/logout"}
+            {"Fn::Sub": "https://${Environment}-${Application}.nudgesecurity.io/logout-redirect"}
         ],
         "ExplicitAuthFlows": [
             "ALLOW_CUSTOM_AUTH",
